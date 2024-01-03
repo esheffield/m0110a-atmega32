@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../projects"
+		},
+		{
+			"name": "m0110a-atmega32",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
