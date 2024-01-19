@@ -1,20 +1,73 @@
 #include <Arduino.h>
+#include <wiring_extras.h>
+#include "m0110a.h"
+
+const byte ROWS = 10;
+const byte COLS = 8;
+const byte MODS = 4;
+
+const byte CLK_PIN = PIN_PD3;
+const byte DATA_PIN = PIN_PD2;
+
+const byte ROW_PINS[] = { PIN_PB0, PIN_PB1, PIN_PB2, PIN_PB3, PIN_PB4, PIN_PB5, PIN_PB6, PIN_PB7, PIN_PA0, PIN_PA1 };
+const byte COL_PINS[] = { PIN_PC0, PIN_PC1, PIN_PC2, PIN_PC3, PIN_PC4, PIN_PC5, PIN_PC6, PIN_PC7 };
+const byte COL_PORT = PORTC;
+
+const byte CMD_PIN = PIN_PA5;
+const byte OPT_PIN = PIN_PA4;
+const byte LCK_PIN = PIN_PA3;
+const byte SHF_PIN = PIN_PA2;
+
+const byte MOD_PINS[] = { CMD_PIN, OPT_PIN, LCK_PIN, SHF_PIN };
+
+byte key_states[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+byte opt_state = 0;
+byte cmd_state = 0;
+byte lck_state = 0;
+byte shf_state = 0;
 
 // put function declarations here:
-int myFunction(int, int);
+char readMods() {
+    byte cmd = digitalRead(CMD_PIN);
+    Serial.printf("  CMD:  %02X\n\r", cmd);
+    byte opt = digitalRead(OPT_PIN);
+    Serial.printf("  OPT:  %02X\n\r", opt);
+    byte lck = digitalRead(LCK_PIN);
+    Serial.printf("  LCK:  %02X\n\r", lck);
+    byte shf = digitalRead(SHF_PIN);
+    Serial.printf("  SHF:  %02X\n\r", shf);
+
+    return cmd | opt | lck | shf;
+}
+
+char readCols() {
+    byte cols = portRead(COL_PORT);
+    return cols;
+}
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    // for(int i = 0; i < ROWS; i++) {
+    //     pinMode(ROW_PINS[i], OUTPUT);
+    // };
+
+    // portMode(COL_PORT, INPUT);
+
+    for(int i = 0; i < MODS; i++) {
+        pinMode(MOD_PINS[i], INPUT_PULLUP);
+    };
+
+    // pinMode(CLK_PIN, OUTPUT);
+    // pinMode(DATA_PIN, INPUT);
+
+    Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    byte mods = readMods();
+    //if (mods != 0x0F) {
+        Serial.printf("Mods:  %02X\n\r", mods);
+    //}
+    delay(1000);
 }
 
 /*
