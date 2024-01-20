@@ -90,15 +90,15 @@
 #define KEY_TXN_UP 0x80
 #define KEY_NULL 0x00
 
-const unsigned long KEYPAD_MAP_BY_COL[8] = {
+const unsigned int KEYPAD_MAP_BY_COL[8] = {
     0,
     0,
     0,
     0,
-    0x038000,
-    0x03FE00,
-    0x003A00,
-    0x03F000,
+    0x380,
+    0x3DE,
+    0x01e,
+    0x380,
 };
 
 const byte KEYMAP[10][8] = {

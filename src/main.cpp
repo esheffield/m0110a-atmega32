@@ -14,8 +14,8 @@ const byte MODS = 4;
 const byte CLK_PIN = PIN_PD3;
 const byte DATA_PIN = PIN_PD2;
 
-const byte ROW_PINS[] = { PIN_PB0, PIN_PB1, PIN_PB2, PIN_PB3, PIN_PB4, PIN_PB5, PIN_PB6, PIN_PB7, PIN_PA0, PIN_PA1 };
-const byte COL_PINS[] = { PIN_PC0, PIN_PC1, PIN_PC2, PIN_PC3, PIN_PC4, PIN_PC5, PIN_PC6, PIN_PC7 };
+const byte ROW_PINS[] = {PIN_PB0, PIN_PB1, PIN_PB2, PIN_PB3, PIN_PB4, PIN_PB5, PIN_PB6, PIN_PB7, PIN_PA0, PIN_PA1};
+const byte COL_PINS[] = {PIN_PC0, PIN_PC1, PIN_PC2, PIN_PC3, PIN_PC4, PIN_PC5, PIN_PC6, PIN_PC7};
 const byte COL_PORT = PORTC;
 
 const byte CMD_PIN = PIN_PA5;
@@ -23,7 +23,7 @@ const byte OPT_PIN = PIN_PA4;
 const byte LCK_PIN = PIN_PA3;
 const byte SHF_PIN = PIN_PA2;
 
-const byte MOD_PINS[] = { CMD_PIN, OPT_PIN, LCK_PIN, SHF_PIN };
+const byte MOD_PINS[] = {CMD_PIN, OPT_PIN, LCK_PIN, SHF_PIN};
 
 byte key_states[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 byte opt_state = 0;
@@ -32,41 +32,29 @@ byte lck_state = 0;
 byte shf_state = 0;
 
 // put function declarations here:
-byte readMods() {
-    byte cmd = digitalRead(CMD_PIN) << 3;
-    byte opt = digitalRead(OPT_PIN) << 2;
-    byte lck = digitalRead(LCK_PIN) << 1;
-    byte shf = digitalRead(SHF_PIN);
 
-    return cmd | opt | lck | shf;
-}
+byte readMods();
+byte readCols();
+void initRows();
 
-byte readCols() {
-    byte cols = 0;
-    for(int i = COLS - 1; i >= 0; i--) {
-        int val = digitalRead(COL_PINS[i]) << i;
-        cols |= (val & 0xFF);
-    }
+bool isKeypad(byte active_row, byte col);
+bool isKeypadShift(byte active_row, byte col);
+void printKeyCode(byte key_code);
 
-    return cols;
-}
-
-void initRows() {
-    for(int i = 0; i < ROWS; i++) {
-        digitalWrite(ROW_PINS[i], HIGH);
-    }
-}
-
-void setup() {
-    for(int i = 0; i < ROWS; i++) {
-        pinMode(ROW_PINS[i], OUTPUT);
+void setup()
+{
+    for (int i = 0; i < ROWS; i++)
+    {
+        pinMode(ROW_PINS[i], INPUT);
     };
 
-    for(int i = 0; i < COLS; i++) {
+    for (int i = 0; i < COLS; i++)
+    {
         pinMode(COL_PINS[i], INPUT);
     };
 
-    for(int i = 0; i < MODS; i++) {
+    for (int i = 0; i < MODS; i++)
+    {
         pinMode(MOD_PINS[i], INPUT_PULLUP);
     };
 
@@ -76,22 +64,116 @@ void setup() {
     Serial.begin(9600);
 }
 
-void loop() {
+void loop()
+{
     byte mods = readMods();
-    if (mods != 0x0F) {
+    if (mods != 0x0F)
+    {
         Serial.printf("Mods:  %02X\n\r", mods);
     }
 
     initRows();
     Serial.printf("--------------------\n\r");
-    for(int i = 0; i < ROWS; i++) {
-        digitalWrite(ROW_PINS[i], LOW);
-        byte cols = readCols();
-        digitalWrite(ROW_PINS[i], HIGH);
-        Serial.printf("Row: %d\tCols:  %02X\n\r", i, cols);
+
+    char key_code = KEY_NULL;
+    for (int row = 0; row < ROWS; row++)
+    {
+        pinMode(ROW_PINS[row], OUTPUT);
+        digitalWrite(ROW_PINS[row], LOW);
+        byte col_values = readCols();
+        pinMode(ROW_PINS[row], INPUT);
+
+        Serial.printf("ROW: %d\tCOLS: %02X\n\r", row, col_values);
+
+        byte key_col_states = key_states[row];
+        for (int col = 0; col < COLS; col++)
+        {
+            byte mask = 1 << col;
+            key_code = KEYMAP[row][col];
+            byte last_key_state = key_col_states & mask;
+            byte cur_key_state = col_values & mask;
+
+            if (last_key_state && !cur_key_state) // key transition from pressed to released
+            {
+                // Set bit 7 to indicate key release
+                key_code |= KEY_TXN_UP;
+            }
+            else if (cur_key_state == last_key_state) // key state unchanged
+            {
+                key_code = KEY_NULL;
+            }
+
+            if (key_code)
+            {
+                if (isKeypadShift(row, col))
+                {
+                    printKeyCode(KEY_SHIFT);
+                    printKeyCode(KP_MOD);
+                }
+                else if (isKeypad(row, col))
+                {
+                    printKeyCode(KP_MOD);
+                }
+            }
+            printKeyCode(key_code);
+        }
+
+        key_states[row] = col_values;
     }
 
-    delay(3000);
+    delay(2000);
+}
+
+byte readMods()
+{
+    byte cmd = digitalRead(CMD_PIN) << 3;
+    byte opt = digitalRead(OPT_PIN) << 2;
+    byte lck = digitalRead(LCK_PIN) << 1;
+    byte shf = digitalRead(SHF_PIN);
+
+    return cmd | opt | lck | shf;
+}
+
+byte readCols()
+{
+    byte cols = 0;
+    for (int i = COLS - 1; i >= 0; i--)
+    {
+        cols |= digitalRead(COL_PINS[i]) << i;
+    }
+
+    return ~cols;
+}
+
+void initRows()
+{
+    for (int i = 0; i < ROWS; i++)
+    {
+        digitalWrite(ROW_PINS[i], HIGH);
+    }
+}
+
+// Check if the key is a keypad or arrow key needing a "keypad" prefix (0x79)
+bool isKeypad(byte active_row, byte col)
+{
+    byte kp_row = KEYPAD_MAP_BY_COL[col];
+    return active_row && kp_row;
+}
+
+// Check if the key is one of the keypad keys that needs a "shift" prefix (0x71)
+bool isKeypadShift(byte row, byte col)
+{
+    return (col == 5 && (row == 9)) || (col == 6 && (row == 2 || row == 3));
+}
+
+// Debug method to print out a key code with transition flag
+void printKeyCode(byte key_code)
+{
+    if (key_code)
+    {
+        const char *txn = (key_code & KEY_TXN_UP) ? "Released" : "Pressed";
+        Serial.printf("Key code: %02X %s\n\r", key_code, txn);
+    }
 }
 
 /*
@@ -169,17 +251,17 @@ int main()
 
             if (key_code)
             {
-                if (is_keypad_shift(active_row, col))
+                if (isKeypadShift(active_row, col))
                 {
-                    print_key_code(KEY_SHIFT);
-                    print_key_code(KP_MOD);
+                    printKeyCode(KEY_SHIFT);
+                    printKeyCode(KP_MOD);
                 }
-                else if (is_keypad(active_row, col))
+                else if (isKeypad(active_row, col))
                 {
-                    print_key_code(KP_MOD);
+                    printKeyCode(KP_MOD);
                 }
             }
-            print_key_code(key_code);
+            printKeyCode(key_code);
         }
 
         key_states[row] = col_values;
@@ -189,30 +271,6 @@ int main()
 */
 
 /*
-// Check if the key is a keypad or arrow key needing a "keypad" prefix (0x79)
-bool is_keypad(uint active_row, char col)
-{
-    uint kp_row = KEYPAD_MAP_BY_COL[col];
-    return active_row && kp_row;
-}
-
-// Check if the key is one of the keypad keys that needs a "shift" prefix (0x71)
-bool is_keypad_shift(uint active_row, char col)
-{
-    return (col == 5 && (0x020000 & active_row))
-        || (col == 6 && (0x000C00 & active_row));
-}
-
-// Debug method to print out a key code with transition flag
-void print_key_code(char key_code)
-{
-    if (key_code)
-    {
-        char *txn = (key_code & KEY_TXN_UP) ? "Released" : "Pressed";
-        printf("Key code: %02X %s\n", key_code, txn);
-    }
-}
-
 // Checks if a given modifier key (Option, Command, Shift, Shift-Lock)
 // has transitioned and returns the key_code with transition flag if so
 char check_modifier(uint masked_value, char mod_key_code, char *state)
@@ -232,7 +290,7 @@ char check_modifier(uint masked_value, char mod_key_code, char *state)
         key_code = KEY_NULL;
     }
 
-    print_key_code(key_code);
+    printKeyCode(key_code);
 
     return key_code;
 }
