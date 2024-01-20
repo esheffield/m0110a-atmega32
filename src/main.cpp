@@ -45,17 +45,22 @@ byte readCols() {
     byte cols = 0;
     for(int i = COLS - 1; i >= 0; i--) {
         int val = digitalRead(COL_PINS[i]) << i;
-        Serial.printf("  Val: %02X\n\r", val);
         cols |= (val & 0xFF);
     }
 
     return cols;
 }
 
+void initRows() {
+    for(int i = 0; i < ROWS; i++) {
+        digitalWrite(ROW_PINS[i], HIGH);
+    }
+}
+
 void setup() {
-    // for(int i = 0; i < ROWS; i++) {
-    //     pinMode(ROW_PINS[i], OUTPUT);
-    // };
+    for(int i = 0; i < ROWS; i++) {
+        pinMode(ROW_PINS[i], OUTPUT);
+    };
 
     for(int i = 0; i < COLS; i++) {
         pinMode(COL_PINS[i], INPUT);
@@ -77,11 +82,16 @@ void loop() {
         Serial.printf("Mods:  %02X\n\r", mods);
     }
 
-    byte cols = readCols();
+    initRows();
+    Serial.printf("--------------------\n\r");
+    for(int i = 0; i < ROWS; i++) {
+        digitalWrite(ROW_PINS[i], LOW);
+        byte cols = readCols();
+        digitalWrite(ROW_PINS[i], HIGH);
+        Serial.printf("Row: %d\tCols:  %02X\n\r", i, cols);
+    }
 
-    Serial.printf("Cols:  %02X\n\n\r", cols);
-
-    delay(2000);
+    delay(3000);
 }
 
 /*
