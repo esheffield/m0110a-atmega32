@@ -2,6 +2,11 @@
 #include <wiring_extras.h>
 #include "m0110a.h"
 
+#define CMD_MASK 0x08
+#define OPT_MASK 0x04
+#define LCK_MASK 0x02
+#define SHF_MASK 0x01
+
 const byte ROWS = 10;
 const byte COLS = 8;
 const byte MODS = 4;
@@ -27,21 +32,23 @@ byte lck_state = 0;
 byte shf_state = 0;
 
 // put function declarations here:
-char readMods() {
-    byte cmd = digitalRead(CMD_PIN);
-    Serial.printf("  CMD:  %02X\n\r", cmd);
-    byte opt = digitalRead(OPT_PIN);
-    Serial.printf("  OPT:  %02X\n\r", opt);
-    byte lck = digitalRead(LCK_PIN);
-    Serial.printf("  LCK:  %02X\n\r", lck);
+byte readMods() {
+    byte cmd = digitalRead(CMD_PIN) << 3;
+    byte opt = digitalRead(OPT_PIN) << 2;
+    byte lck = digitalRead(LCK_PIN) << 1;
     byte shf = digitalRead(SHF_PIN);
-    Serial.printf("  SHF:  %02X\n\r", shf);
 
     return cmd | opt | lck | shf;
 }
 
-char readCols() {
-    byte cols = portRead(COL_PORT);
+byte readCols() {
+    byte cols = 0;
+    for(int i = COLS - 1; i >= 0; i--) {
+        int val = digitalRead(COL_PINS[i]) << i;
+        Serial.printf("  Val: %02X\n\r", val);
+        cols |= (val & 0xFF);
+    }
+
     return cols;
 }
 
@@ -50,7 +57,9 @@ void setup() {
     //     pinMode(ROW_PINS[i], OUTPUT);
     // };
 
-    // portMode(COL_PORT, INPUT);
+    for(int i = 0; i < COLS; i++) {
+        pinMode(COL_PINS[i], INPUT);
+    };
 
     for(int i = 0; i < MODS; i++) {
         pinMode(MOD_PINS[i], INPUT_PULLUP);
@@ -64,10 +73,15 @@ void setup() {
 
 void loop() {
     byte mods = readMods();
-    //if (mods != 0x0F) {
+    if (mods != 0x0F) {
         Serial.printf("Mods:  %02X\n\r", mods);
-    //}
-    delay(1000);
+    }
+
+    byte cols = readCols();
+
+    Serial.printf("Cols:  %02X\n\n\r", cols);
+
+    delay(2000);
 }
 
 /*
