@@ -4,6 +4,13 @@
 #define M0110AKEYBOARD_HPP
 
 #define MODEL_ID 0x0B
+#define KB_ACK 0x7D
+#define KB_NAK 0x77
+#define KB_NULL 0x7B
+#define KP_MOD 0x79
+
+#define KEY_NONE 0x00
+#define KEY_TXN_UP 0x80
 
 #define CMD_MODEL 0x16
 #define CMD_INQUIRY 0x10
@@ -88,11 +95,6 @@
 #define KEY_KP_DEC 0x03
 #define KEY_KP_ENTER 0x19
 
-#define KP_MOD 0x79
-
-#define KEY_TXN_UP 0x80
-#define KEY_NULL 0x00
-
 #define ROW_COUNT 10
 #define COL_COUNT 8
 #define MOD_COUNT 4
@@ -136,19 +138,20 @@ public:
     M0110aKeyboard(){};
 
     void begin(byte *row_pins, byte *col_pins, byte *mod_pins);
+    void reset();
 
     uint16_t getScanCode();
 };
 
-const unsigned int KEYPAD_MAP_BY_COL[8] = {
+const uint16_t KEYPAD_MAP_BY_COL[8] = {
     0,
     0,
     0,
     0,
     0x380,
-    0x3DE,
-    0x01e,
-    0x380,
+    0x3FE,
+    0x03C,
+    0x3F0,
 };
 
 const byte KEYMAP[10][8] = {
@@ -158,19 +161,19 @@ const byte KEYMAP[10][8] = {
         KEY_TAB,
         KEY_A,
         KEY_SPC,
-        KEY_NULL,
+        KEY_NONE,
         KEY_Z,
-        KEY_NULL,
+        KEY_NONE,
     },
     {
         KEY_C,
         KEY_1,
         KEY_Q,
         KEY_S,
-        KEY_NULL,
+        KEY_NONE,
         KEY_KP_7,
-        KEY_NULL,
-        KEY_NULL,
+        KEY_NONE,
+        KEY_NONE,
     },
     {
         KEY_V,
@@ -180,7 +183,7 @@ const byte KEYMAP[10][8] = {
         KEY_P,
         KEY_KP_8,
         KEY_KP_MUL,
-        KEY_NULL,
+        KEY_NONE,
     },
     {
         KEY_B,
@@ -243,7 +246,7 @@ const byte KEYMAP[10][8] = {
         KEY_KP_DEC,
     },
     {
-        KEY_NULL,
+        KEY_NONE,
         KEY_9,
         KEY_O,
         KEY_SEMI,

@@ -19,9 +19,7 @@ public:
 
     void begin(byte data_pin, byte clock_pin);
     byte readCmd();
-    void sendKey(byte key);
-
-private:
+    void sendKey(uint16_t key);
     byte readByte();
     void sendByte(byte b);
 };

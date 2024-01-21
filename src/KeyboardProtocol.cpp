@@ -1,6 +1,8 @@
 #include <M0110aKeyboard.hpp>
 #include <KeyboardProtocol.hpp>
 
+// #define SERIAL_DEBUG
+
 void KeyboardProtocol::begin(byte data_pin, byte clock_pin)
 {
   this->data_pin = data_pin;
@@ -13,7 +15,7 @@ void KeyboardProtocol::begin(byte data_pin, byte clock_pin)
 byte KeyboardProtocol::readCmd()
 {
   digitalWrite(LED_BUILTIN, LOW);
-  pinMode(this->data_pin, INPUT_PULLUP);
+  pinMode(this->data_pin, INPUT);
   delayMicroseconds(20);
 
   while (digitalRead(this->data_pin) != LOW)
@@ -29,7 +31,7 @@ byte KeyboardProtocol::readCmd()
   return cmd;
 }
 
-void KeyboardProtocol::sendKey(byte key)
+void KeyboardProtocol::sendKey(uint16_t key)
 {
   if (key & NUMPAD)
   {
@@ -44,6 +46,9 @@ void KeyboardProtocol::sendKey(byte key)
     sendByte(KP_MOD);
     readCmd();
     sendByte(key);
+  }
+  else if (key == KEY_NONE) {
+    sendByte(KB_NULL);
   }
   else
   {

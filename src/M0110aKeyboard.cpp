@@ -28,28 +28,35 @@ void M0110aKeyboard::begin(byte *row_pins, byte *col_pins, byte *mod_pins)
     };
 }
 
+void M0110aKeyboard::reset() {
+    for(int i = 0; i < ROW_COUNT; i++) {
+        key_states[i] = 0;
+    }
+
+    opt_state = 0;
+    cmd_state = 0;
+    lck_state = 0;
+    shf_state = 0;
+}
+
 uint16_t M0110aKeyboard::getScanCode()
 {
-    uint16_t key_code = KEY_NULL;
+    uint16_t key_code = KEY_NONE;
 
     byte mod_values = readMods();
 
     // Code is getting printed from check_modifier for now, in future will add the return to the buffer
     key_code = check_modifier((OPT_MASK & mod_values), KEY_OPT, &opt_state);
-    if (key_code)
-        return key_code;
+    if (key_code) return key_code;
 
     key_code = check_modifier((CMD_MASK & mod_values), KEY_CMD, &cmd_state);
-    if (key_code)
-        return key_code;
+    if (key_code) return key_code;
 
     key_code = check_modifier((LCK_MASK & mod_values), KEY_LOCK, &lck_state);
-    if (key_code)
-        return key_code;
+    if (key_code) return key_code;
 
     key_code = check_modifier((SHF_MASK & mod_values), KEY_SHIFT, &shf_state);
-    if (key_code)
-        return key_code;
+    if (key_code) return key_code;
 
     for (int row = 0; row < ROW_COUNT; row++)
     {
@@ -75,10 +82,10 @@ uint16_t M0110aKeyboard::getScanCode()
             }
             else if (cur_key_state == last_key_state) // key state unchanged
             {
-                key_code = KEY_NULL;
+                key_code = KEY_NONE;
             }
 
-            if (key_code)
+            if (key_code != KEY_NONE)
             {
                 if (isKeypadShift(row, col))
                 {
@@ -94,7 +101,7 @@ uint16_t M0110aKeyboard::getScanCode()
         }
     }
 
-    return KEY_NULL;
+    return KEY_NONE;
 }
 
 byte M0110aKeyboard::readMods()
@@ -121,10 +128,17 @@ byte M0110aKeyboard::readCols()
 }
 
 // Check if the key is a keypad or arrow key needing a "keypad" prefix (0x79)
-bool M0110aKeyboard::isKeypad(byte active_row, byte col)
+bool M0110aKeyboard::isKeypad(byte row, byte col)
 {
-    byte kp_row = KEYPAD_MAP_BY_COL[col];
-    return active_row && kp_row;
+    Serial.printf("(%d, %d)\n\r", row, col);
+
+    uint16_t kp_row = KEYPAD_MAP_BY_COL[col];
+
+    uint16_t active_row = (1 << row);
+
+    Serial.printf("active_row: %02X\tkp_row: %02X\n\r", active_row, kp_row);
+
+    return (active_row & kp_row);
 }
 
 // Check if the key is one of the keypad keys that needs a "shift" prefix (0x71)
@@ -149,7 +163,7 @@ byte M0110aKeyboard::check_modifier(byte masked_value, byte mod_key_code, byte *
     }
     else
     {
-        key_code = KEY_NULL;
+        key_code = KEY_NONE;
     }
 
     return key_code;
