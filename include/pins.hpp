@@ -1,0 +1,18 @@
+#include <Arduino.h>
+
+#ifndef PINS_HPP
+#define PINS_HPP
+
+#define CLK_PIN PIN_PD3
+#define DATA_PIN PIN_PD2
+
+#define CMD_PIN PIN_PA5
+#define OPT_PIN PIN_PA4
+#define LCK_PIN PIN_PA3
+#define SHF_PIN PIN_PA2
+
+byte ROW_PINS[] = {PIN_PB0, PIN_PB1, PIN_PB2, PIN_PB3, PIN_PB4, PIN_PB5, PIN_PB6, PIN_PB7, PIN_PA0, PIN_PA1};
+byte COL_PINS[] = {PIN_PC0, PIN_PC1, PIN_PC2, PIN_PC3, PIN_PC4, PIN_PC5, PIN_PC6, PIN_PC7};
+byte MOD_PINS[] = {CMD_PIN, OPT_PIN, LCK_PIN, SHF_PIN};
+
+#endif

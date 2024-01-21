@@ -1,5 +1,8 @@
 #include <Arduino.h>
 
+#ifndef M0110AKEYBOARD_HPP
+#define M0110AKEYBOARD_HPP
+
 #define MODEL_ID 0x0B
 
 #define CMD_MODEL 0x16
@@ -90,16 +93,49 @@
 #define KEY_TXN_UP 0x80
 #define KEY_NULL 0x00
 
-#ifndef M0110aKeyboard_h
-#define M0110aKeyboard_h
+#define ROW_COUNT 10
+#define COL_COUNT 8
+#define MOD_COUNT 4
 
-class M0110aKeyboard {
-  public:
-    M0110aKeyboard();
-    
-    static void begin(byte dataPin, byte irq_pin);
+#define CMD_MASK 0x08
+#define OPT_MASK 0x04
+#define LCK_MASK 0x02
+#define SHF_MASK 0x01
 
-    static int getScanCode();
+#define CMD_PIN_IDX 0
+#define OPT_PIN_IDX 1
+#define LCK_PIN_IDX 2
+#define SHF_PIN_IDX 3
+
+class M0110aKeyboard
+{
+private:
+    byte *row_pins;
+    byte *col_pins;
+    byte *mod_pins;
+
+    byte key_states[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    byte opt_state = 0;
+    byte cmd_state = 0;
+    byte lck_state = 0;
+    byte shf_state = 0;
+
+    // put function declarations here:
+
+    byte readMods();
+    byte readCols();
+
+    bool isKeypad(byte active_row, byte col);
+    bool isKeypadShift(byte active_row, byte col);
+    void printKeyCode(byte key_code);
+    byte check_modifier(byte masked_value, byte mod_key_code, byte *state);
+
+public:
+    M0110aKeyboard(){};
+
+    void begin(byte *row_pins, byte *col_pins, byte *mod_pins);
+
+    byte getScanCode();
 };
 
 const unsigned int KEYPAD_MAP_BY_COL[8] = {
