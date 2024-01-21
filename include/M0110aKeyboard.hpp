@@ -107,6 +107,9 @@
 #define LCK_PIN_IDX 2
 #define SHF_PIN_IDX 3
 
+#define NUMPAD 0x0100
+#define NUMPAD2 0x0200
+
 class M0110aKeyboard
 {
 private:
@@ -127,7 +130,6 @@ private:
 
     bool isKeypad(byte active_row, byte col);
     bool isKeypadShift(byte active_row, byte col);
-    void printKeyCode(byte key_code);
     byte check_modifier(byte masked_value, byte mod_key_code, byte *state);
 
 public:
@@ -135,7 +137,7 @@ public:
 
     void begin(byte *row_pins, byte *col_pins, byte *mod_pins);
 
-    byte getScanCode();
+    uint16_t getScanCode();
 };
 
 const unsigned int KEYPAD_MAP_BY_COL[8] = {
