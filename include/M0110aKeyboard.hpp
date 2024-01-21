@@ -90,6 +90,18 @@
 #define KEY_TXN_UP 0x80
 #define KEY_NULL 0x00
 
+#ifndef M0110aKeyboard_h
+#define M0110aKeyboard_h
+
+class M0110aKeyboard {
+  public:
+    M0110aKeyboard();
+    
+    static void begin(byte dataPin, byte irq_pin);
+
+    static int getScanCode();
+};
+
 const unsigned int KEYPAD_MAP_BY_COL[8] = {
     0,
     0,
@@ -203,3 +215,5 @@ const byte KEYMAP[10][8] = {
         KEY_KP_ENTER,
     },
 };
+
+#endif
