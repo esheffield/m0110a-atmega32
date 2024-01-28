@@ -3,3 +3,6 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+**/m0110a_atmega32_pcb-backups/**
+**/fp-info-cache
+**/fp-lib-table
