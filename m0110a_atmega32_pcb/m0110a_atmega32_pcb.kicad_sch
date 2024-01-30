@@ -908,77 +908,6 @@
         )
       )
     )
-    (symbol "Device:Crystal" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "Y" (at 0 3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "Crystal" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "quartz ceramic resonator oscillator" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Two pin crystal" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "Crystal*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "Crystal_0_1"
-        (rectangle (start -1.143 2.54) (end 1.143 -2.54)
-          (stroke (width 0.3048) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.54 0)
-            (xy -1.905 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.905 -1.27)
-            (xy -1.905 1.27)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.905 -1.27)
-            (xy 1.905 1.27)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 0)
-            (xy 1.905 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "Crystal_1_1"
-        (pin passive line (at -3.81 0 0) (length 1.27)
-          (name "1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 3.81 0 180) (length 1.27)
-          (name "2" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
@@ -1229,6 +1158,96 @@
         )
       )
     )
+    (symbol "m0110a:ABM3-8.000MHZ-D2Y-T" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
+      (property "Reference" "Y" (at 8.89 6.35 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Value" "ABM3-8.000MHZ-D2Y-T" (at 8.89 3.81 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "ABM3" (at 8.89 1.27 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Datasheet" "https://abracon.com/Resonators/abm3.pdf" (at 8.89 -1.27 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Description" "MEMS Crystal Oscillator 66.666MHz +/-50ppm 4-Pin SMD Bulk" (at 8.89 -3.81 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Height" "1.3" (at 8.89 -6.35 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Mouser Part Number" "815-ABM3-8-D2Y-T" (at 8.89 -8.89 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/ABRACON/ABM3-8.000MHZ-D2Y-T?qs=ihRgKfnEsN4giUXjc3yS1g%3D%3D" (at 8.89 -11.43 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Manufacturer_Name" "ABRACON" (at 8.89 -13.97 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Manufacturer_Part_Number" "ABM3-8.000MHZ-D2Y-T" (at 8.89 -16.51 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "ki_description" "MEMS Crystal Oscillator 66.666MHz +/-50ppm 4-Pin SMD Bulk" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "ABM3-8.000MHZ-D2Y-T_0_0"
+        (pin passive line (at 0 0 0) (length 2.54)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 10.16 0 180) (length 2.54)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+      )
+      (symbol "ABM3-8.000MHZ-D2Y-T_0_1"
+        (polyline
+          (pts
+            (xy 3.048 0)
+            (xy 2.54 0)
+          )
+          (stroke (width 0.1524) (type solid))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 3.048 2.54)
+            (xy 3.048 -2.54)
+          )
+          (stroke (width 0.1524) (type solid))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 7.112 0)
+            (xy 7.62 0)
+          )
+          (stroke (width 0.1524) (type solid))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 7.112 2.54)
+            (xy 7.112 -2.54)
+          )
+          (stroke (width 0.1524) (type solid))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 4.064 3.556)
+            (xy 4.064 -3.556)
+            (xy 6.096 -3.556)
+            (xy 6.096 3.556)
+            (xy 4.064 3.556)
+          )
+          (stroke (width 0.1524) (type solid))
+          (fill (type none))
+        )
+      )
+    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -1346,25 +1365,25 @@
   (junction (at 204.47 45.72) (diameter 0) (color 0 0 0 0)
     (uuid 1623ee33-290e-47fa-857d-70cf3072b3f6)
   )
+  (junction (at 59.69 55.88) (diameter 0) (color 0 0 0 0)
+    (uuid 23326159-5f6c-4e6a-8ace-7aeb99172449)
+  )
   (junction (at 207.01 45.72) (diameter 0) (color 0 0 0 0)
     (uuid 29dc2619-35fd-4123-8601-22899b865778)
   )
-  (junction (at 50.8 64.77) (diameter 0) (color 0 0 0 0)
+  (junction (at 46.99 64.77) (diameter 0) (color 0 0 0 0)
     (uuid 3ae5bc83-f9e2-4543-92bd-7d689ac30fec)
   )
   (junction (at 193.04 81.28) (diameter 0) (color 0 0 0 0)
     (uuid 42f1801f-37dd-4146-93cb-2de17eabbaed)
   )
-  (junction (at 67.31 57.15) (diameter 0) (color 0 0 0 0)
-    (uuid 44c1b317-3405-455d-aca4-8d35af77afd1)
-  )
-  (junction (at 67.31 64.77) (diameter 0) (color 0 0 0 0)
-    (uuid 63279825-1e18-4cbc-80c9-6a65433a8cdc)
+  (junction (at 59.69 66.04) (diameter 0) (color 0 0 0 0)
+    (uuid 4f2390fa-9e12-4dab-b436-683adb2322f9)
   )
   (junction (at 82.55 53.34) (diameter 0) (color 0 0 0 0)
     (uuid 945120e2-c4b6-449a-9c1b-6259a8a5f707)
   )
-  (junction (at 50.8 76.2) (diameter 0) (color 0 0 0 0)
+  (junction (at 46.99 76.2) (diameter 0) (color 0 0 0 0)
     (uuid c61545eb-8c9b-4fd5-93a3-677476138206)
   )
   (junction (at 199.39 129.54) (diameter 0) (color 0 0 0 0)
@@ -1554,7 +1573,7 @@
     (stroke (width 0) (type default))
     (uuid 02417dc0-d8e2-4762-a81b-a33b33ca0234)
   )
-  (wire (pts (xy 60.96 76.2) (xy 50.8 76.2))
+  (wire (pts (xy 57.15 76.2) (xy 46.99 76.2))
     (stroke (width 0) (type default))
     (uuid 029dd8c9-d14a-4eab-9c67-423e116114d7)
   )
@@ -1673,7 +1692,7 @@
     (stroke (width 0) (type default))
     (uuid 2c0feafe-e821-4d20-a0e9-b1420833e5ff)
   )
-  (wire (pts (xy 50.8 76.2) (xy 50.8 64.77))
+  (wire (pts (xy 46.99 76.2) (xy 46.99 64.77))
     (stroke (width 0) (type default))
     (uuid 2e6d576c-ce60-4df8-b9f9-81f8da1ed669)
   )
@@ -1724,6 +1743,10 @@
     (stroke (width 0) (type default))
     (uuid 449b1998-48bc-4869-9611-0117def682bc)
   )
+  (wire (pts (xy 59.69 55.88) (xy 78.74 55.88))
+    (stroke (width 0) (type default))
+    (uuid 467551b9-dea9-49c6-8d1e-7a52eac981a0)
+  )
   (wire (pts (xy 118.11 91.44) (xy 128.27 91.44))
     (stroke (width 0) (type default))
     (uuid 46fe3010-d15b-4ff1-9207-3feea0c260aa)
@@ -1741,7 +1764,7 @@
     (uuid 4ddc30db-945d-4e6a-bd83-57c38b2bdd82)
   )
 
-  (wire (pts (xy 78.74 63.5) (xy 78.74 64.77))
+  (wire (pts (xy 78.74 63.5) (xy 78.74 66.04))
     (stroke (width 0) (type default))
     (uuid 4e4f9ace-f8cd-4c1f-aa03-c503c43b8dff)
   )
@@ -1758,9 +1781,9 @@
     (uuid 592cab44-0112-41d1-88c5-35391f3905b0)
   )
 
-  (wire (pts (xy 78.74 57.15) (xy 78.74 58.42))
+  (wire (pts (xy 54.61 66.04) (xy 59.69 66.04))
     (stroke (width 0) (type default))
-    (uuid 59a3cea9-ad4b-41c4-9491-85f8ddc3d446)
+    (uuid 5c9758b9-17b7-417b-ac45-9ff373525ef2)
   )
   (bus (pts (xy 196.85 31.75) (xy 196.85 36.83))
     (stroke (width 0) (type default))
@@ -1805,10 +1828,6 @@
     (uuid 6379a4c2-0b24-4036-b1ad-7cab54d59525)
   )
 
-  (wire (pts (xy 58.42 57.15) (xy 67.31 57.15))
-    (stroke (width 0) (type default))
-    (uuid 659d0a22-4b56-46e3-9010-5e2c0b669826)
-  )
   (wire (pts (xy 185.42 58.42) (xy 217.17 58.42))
     (stroke (width 0) (type default))
     (uuid 6690126c-c79d-4f13-a812-d6b9a8441ee9)
@@ -1826,9 +1845,9 @@
     (stroke (width 0) (type default))
     (uuid 6d09df5e-b144-413b-ac1a-aac0fb8a1332)
   )
-  (wire (pts (xy 78.74 64.77) (xy 67.31 64.77))
+  (wire (pts (xy 78.74 55.88) (xy 78.74 58.42))
     (stroke (width 0) (type default))
-    (uuid 752dfc8c-63a6-4955-893e-7862e9990f3f)
+    (uuid 6dbdb251-e51d-4d46-91ab-59629ce051d9)
   )
   (wire (pts (xy 128.27 58.42) (xy 128.27 59.69))
     (stroke (width 0) (type default))
@@ -1837,10 +1856,6 @@
   (wire (pts (xy 204.47 106.68) (xy 217.17 106.68))
     (stroke (width 0) (type default))
     (uuid 7cd9e49c-3885-40c1-98ec-4700f938ac6f)
-  )
-  (wire (pts (xy 67.31 57.15) (xy 78.74 57.15))
-    (stroke (width 0) (type default))
-    (uuid 7d3dc4a2-e757-4c05-affa-f3a465c03431)
   )
   (bus (pts (xy 130.81 111.76) (xy 130.81 114.3))
     (stroke (width 0) (type default))
@@ -1864,7 +1879,7 @@
     (uuid 8261ad7f-f58a-4107-9cef-f424af4f5066)
   )
 
-  (wire (pts (xy 50.8 80.01) (xy 50.8 76.2))
+  (wire (pts (xy 46.99 80.01) (xy 46.99 76.2))
     (stroke (width 0) (type default))
     (uuid 83ad5935-94a8-4ca9-b64d-35e94485153b)
   )
@@ -1875,6 +1890,10 @@
   (wire (pts (xy 193.04 134.62) (xy 217.17 134.62))
     (stroke (width 0) (type default))
     (uuid 854842aa-a9c8-42d6-98b9-46455fafccf7)
+  )
+  (wire (pts (xy 54.61 55.88) (xy 59.69 55.88))
+    (stroke (width 0) (type default))
+    (uuid 8575457e-1155-43c6-b27c-945c813a4bb5)
   )
   (wire (pts (xy 71.12 53.34) (xy 71.12 46.99))
     (stroke (width 0) (type default))
@@ -1907,10 +1926,6 @@
     (uuid 98ed98bf-4a9f-405b-9fe5-37d687d3d840)
   )
 
-  (wire (pts (xy 58.42 64.77) (xy 67.31 64.77))
-    (stroke (width 0) (type default))
-    (uuid 98f58b9a-980b-459b-a658-5212d419c9f8)
-  )
   (wire (pts (xy 187.96 59.69) (xy 187.96 86.36))
     (stroke (width 0) (type default))
     (uuid 99541600-21bf-4f3d-9e6f-a058b474e300)
@@ -1957,6 +1972,10 @@
     (stroke (width 0) (type default))
     (uuid ad0621a2-4599-445d-bac0-c4a2f325587c)
   )
+  (wire (pts (xy 54.61 55.88) (xy 54.61 57.15))
+    (stroke (width 0) (type default))
+    (uuid ae1e7e12-4438-46fe-b625-001d311a7400)
+  )
   (wire (pts (xy 118.11 106.68) (xy 128.27 106.68))
     (stroke (width 0) (type default))
     (uuid afa27b9a-843f-4581-b3c6-e8a82bd3c783)
@@ -1965,7 +1984,7 @@
     (stroke (width 0) (type default))
     (uuid b4adff6b-c057-4cdb-a53c-b287d5f93429)
   )
-  (wire (pts (xy 50.8 57.15) (xy 50.8 64.77))
+  (wire (pts (xy 46.99 57.15) (xy 46.99 64.77))
     (stroke (width 0) (type default))
     (uuid b980e84d-01b0-4da0-9095-5c9521118cf6)
   )
@@ -1992,6 +2011,10 @@
   (wire (pts (xy 204.47 101.6) (xy 217.17 101.6))
     (stroke (width 0) (type default))
     (uuid c1d076f4-0a66-4b26-82dc-dcf889989e3c)
+  )
+  (wire (pts (xy 54.61 66.04) (xy 54.61 64.77))
+    (stroke (width 0) (type default))
+    (uuid c2a9b647-df38-4327-a0bb-736b7b0ce823)
   )
   (wire (pts (xy 107.95 41.91) (xy 105.41 41.91))
     (stroke (width 0) (type default))
@@ -2036,7 +2059,7 @@
     (stroke (width 0) (type default))
     (uuid cf7c856e-1c83-469f-b05a-b457a33969c1)
   )
-  (wire (pts (xy 87.63 68.58) (xy 60.96 68.58))
+  (wire (pts (xy 87.63 68.58) (xy 57.15 68.58))
     (stroke (width 0) (type default))
     (uuid d081ceee-5012-483f-b24b-c61344faff3a)
   )
@@ -2053,13 +2076,17 @@
     (stroke (width 0) (type default))
     (uuid d710c323-8737-47df-b07e-2976bdbcffde)
   )
-  (wire (pts (xy 60.96 68.58) (xy 60.96 76.2))
+  (wire (pts (xy 57.15 68.58) (xy 57.15 76.2))
     (stroke (width 0) (type default))
     (uuid db0aec43-71e2-41c6-9cb7-7cd1042b7e0c)
   )
   (wire (pts (xy 181.61 129.54) (xy 181.61 53.34))
     (stroke (width 0) (type default))
     (uuid de3154df-8fd5-44cd-a562-ea9072da340e)
+  )
+  (wire (pts (xy 59.69 66.04) (xy 78.74 66.04))
+    (stroke (width 0) (type default))
+    (uuid de4fb888-2470-4996-a815-59789a67ce16)
   )
   (wire (pts (xy 193.04 81.28) (xy 193.04 45.72))
     (stroke (width 0) (type default))
@@ -2392,7 +2419,7 @@
     (property "Value" "Conn_01x40_Pin" (at 223.52 96.52 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "m0110a:Conn_2.54_W15.24mm" (at 222.25 96.52 0)
+    (property "Footprint" "m0110a:Header_2.54_W15.24mm" (at 222.25 96.52 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 222.25 96.52 0)
@@ -2439,7 +2466,7 @@
     (pin "8" (uuid 500ce89f-404a-497d-b0bc-a0960d30792c))
     (pin "9" (uuid 2a37da59-c42f-4113-a482-1e13fbdd806c))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "J1") (unit 1)
         )
@@ -2465,7 +2492,7 @@
     (pin "1" (uuid 0fb5b4bb-08a9-4363-92ef-01ce2239733d))
     (pin "2" (uuid ef72c559-de04-414a-95c6-e6069c571c81))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "J3") (unit 1)
         )
@@ -2490,7 +2517,7 @@
     )
     (pin "1" (uuid 6a1ea5e9-ca99-4a41-95ad-6bc7563d8ec1))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR04") (unit 1)
         )
@@ -2515,7 +2542,7 @@
     )
     (pin "1" (uuid 44ee6454-ac6b-45da-b04a-67b22a8d0e83))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR07") (unit 1)
         )
@@ -2523,27 +2550,71 @@
     )
   )
 
-  (symbol (lib_id "Device:C") (at 54.61 57.15 90) (unit 1)
+  (symbol (lib_id "Device:C") (at 50.8 57.15 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3ecd88be-ec2e-4935-a0e6-08979c610338)
-    (property "Reference" "C1" (at 54.61 49.53 90)
+    (property "Reference" "C1" (at 50.8 49.53 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "22p" (at 54.61 52.07 90)
+    (property "Value" "22p" (at 50.8 52.07 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 58.42 56.1848 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 54.61 56.1848 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 54.61 57.15 0)
+    (property "Datasheet" "~" (at 50.8 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 9de13344-8774-4bf2-8603-cf7563e64c54))
     (pin "2" (uuid fa7ff086-31ac-4f48-a7a3-2cc6b0ecdb15))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "C1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "m0110a:ABM3-8.000MHZ-D2Y-T") (at 59.69 55.88 270) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 451f7e00-911a-47af-89de-14bf1829516c)
+    (property "Reference" "Y1" (at 64.77 59.69 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "ABM3-8.000MHZ-D2Y-T" (at 64.77 62.23 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "ABM3" (at 60.96 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datasheet" "https://abracon.com/Resonators/abm3.pdf" (at 58.42 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Description" "MEMS Crystal Oscillator 66.666MHz +/-50ppm 4-Pin SMD Bulk" (at 55.88 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Height" "1.3" (at 53.34 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Part Number" "815-ABM3-8-D2Y-T" (at 50.8 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/ABRACON/ABM3-8.000MHZ-D2Y-T?qs=ihRgKfnEsN4giUXjc3yS1g%3D%3D" (at 48.26 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Name" "ABRACON" (at 45.72 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Part_Number" "ABM3-8.000MHZ-D2Y-T" (at 43.18 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (pin "1" (uuid e13c3512-07ce-4b4a-b7a1-a9925988d1db))
+    (pin "2" (uuid e55a47a7-b353-45fe-bbad-e27760be2aab))
+    (instances
+      (project "m0110a_atmega32_pcb"
+        (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
+          (reference "Y1") (unit 1)
         )
       )
     )
@@ -2567,7 +2638,7 @@
     (pin "1" (uuid dfb5aaba-eaab-4947-88ba-f768f2b5870b))
     (pin "2" (uuid 9ce90350-24ff-4730-8f51-9e7fe77c9346))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "C3") (unit 1)
         )
@@ -2575,24 +2646,24 @@
     )
   )
 
-  (symbol (lib_id "power:GNDREF") (at 50.8 80.01 0) (unit 1)
+  (symbol (lib_id "power:GNDREF") (at 46.99 80.01 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4e83c4b0-94ca-4f01-a363-bceb90a47fc5)
-    (property "Reference" "#PWR01" (at 50.8 86.36 0)
+    (property "Reference" "#PWR01" (at 46.99 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GNDREF" (at 50.8 85.09 0)
+    (property "Value" "GNDREF" (at 46.99 85.09 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 50.8 80.01 0)
+    (property "Footprint" "" (at 46.99 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 50.8 80.01 0)
+    (property "Datasheet" "" (at 46.99 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 4c790ae0-6d22-41bf-ba38-7fe958112d6c))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR01") (unit 1)
         )
@@ -2617,7 +2688,7 @@
     )
     (pin "1" (uuid 5cbef300-0bf4-4489-90d5-e427ff22054e))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR02") (unit 1)
         )
@@ -2642,7 +2713,7 @@
     )
     (pin "1" (uuid ccffa4a1-a5fd-4c5e-93da-e725940d5531))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR08") (unit 1)
         )
@@ -2668,7 +2739,7 @@
     (pin "1" (uuid 225a0af4-8a91-4cc7-8857-abaecbd873ab))
     (pin "2" (uuid c4f931cf-9b45-4121-96a8-13c3ba94dfab))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "R1") (unit 1)
         )
@@ -2693,35 +2764,9 @@
     )
     (pin "1" (uuid 686480dd-bee3-4599-8439-f9157b47966b))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR03") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:Crystal") (at 67.31 60.96 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 802d93b0-d5f6-4bee-a517-8206c940a44f)
-    (property "Reference" "Y1" (at 71.12 59.69 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "8 MHz" (at 71.12 62.23 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "Crystal:Crystal_SMD_2012-2Pin_2.0x1.2mm" (at 67.31 60.96 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 67.31 60.96 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 6d8761ea-cc93-4680-94b4-9bbc5608ae11))
-    (pin "2" (uuid e7314a79-a256-4ff3-b7dd-e707231fad5c))
-    (instances
-      (project "m0110a_atmega32_mod"
-        (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
-          (reference "Y1") (unit 1)
         )
       )
     )
@@ -2744,7 +2789,7 @@
     )
     (pin "1" (uuid d8d9ac3e-c97b-4228-94fe-5c55cb30e0a2))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR05") (unit 1)
         )
@@ -2774,7 +2819,7 @@
     (pin "5" (uuid b405445b-3d3b-45db-b28c-9792073f52cb))
     (pin "6" (uuid 06020a55-9a39-47a8-8bfc-c509177fe1fe))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "J2") (unit 1)
         )
@@ -2799,7 +2844,7 @@
     )
     (pin "1" (uuid f1c54a74-9cfb-4c2f-836c-2e840ecd78da))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "#PWR06") (unit 1)
         )
@@ -2868,7 +2913,7 @@
     (pin "8" (uuid 991ab1a6-4507-4c80-a36a-9559bea3a64e))
     (pin "9" (uuid f89f823a-0bc0-4339-87d2-f248929c7281))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "U2") (unit 1)
         )
@@ -2876,25 +2921,25 @@
     )
   )
 
-  (symbol (lib_id "Device:C") (at 54.61 64.77 90) (unit 1)
+  (symbol (lib_id "Device:C") (at 50.8 64.77 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d6c9d711-0cce-4f3c-b748-5bbd4e286dd1)
-    (property "Reference" "C2" (at 54.61 68.58 90)
+    (property "Reference" "C2" (at 50.8 68.58 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "22p" (at 54.61 71.12 90)
+    (property "Value" "22p" (at 50.8 71.12 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 58.42 63.8048 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 54.61 63.8048 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 54.61 64.77 0)
+    (property "Datasheet" "~" (at 50.8 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 4681c1f9-beb4-421c-9b8c-0aa37d659277))
     (pin "2" (uuid 5f1ed264-2794-4711-8786-26a4d51659a4))
     (instances
-      (project "m0110a_atmega32_mod"
+      (project "m0110a_atmega32_pcb"
         (path "/a1198300-da90-46e8-a8a2-d3cc0b3c7a24"
           (reference "C2") (unit 1)
         )
