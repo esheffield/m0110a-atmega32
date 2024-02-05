@@ -41,7 +41,8 @@ void KeyboardProtocol::sendKey(uint16_t key)
   }
   else if (key & NUMPAD2)
   {
-    sendByte(KEY_SHIFT);
+    // if key was released, send shift released as well
+    sendByte(KEY_SHIFT | (key & KEY_TXN_UP));
     readCmd();
     sendByte(KP_MOD);
     readCmd();
