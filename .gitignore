@@ -4,5 +4,6 @@
 .vscode/launch.json
 .vscode/ipch
 **/m0110a_atmega32_pcb-backups/**
+**/m0110a_atmega32_thru_hole_pcb-backups/**
 **/fp-info-cache
 **/fp-lib-table
