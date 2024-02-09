@@ -3,8 +3,8 @@
 #ifndef PINS_HPP
 #define PINS_HPP
 
-#define CLK_PIN PIN_PD3
-#define DATA_PIN PIN_PD2
+#define CLK_PIN PIN_PD2
+#define DATA_PIN PIN_PD3
 
 #define CMD_PIN PIN_PA5
 #define OPT_PIN PIN_PA4
