@@ -1,8 +1,6 @@
 #include <M0110aKeyboard.hpp>
 #include <KeyboardProtocol.hpp>
 
-// #define SERIAL_DEBUG
-
 void KeyboardProtocol::begin(byte data_pin, byte clock_pin)
 {
   this->data_pin = data_pin;
@@ -69,19 +67,12 @@ byte KeyboardProtocol::readByte()
     b = (b << 1) | digitalRead(this->data_pin);
     delayMicroseconds(140);
   }
-#ifdef SERIAL_DEBUG
-  Serial.print(b, HEX);
-  Serial.print(" -> ");
-#endif
+
   return b;
 }
 
 void KeyboardProtocol::sendByte(byte b)
 {
-#ifdef SERIAL_DEBUG
-  Serial.print(b, HEX);
-  Serial.println();
-#endif
   for (byte m = 128; m > 0; m >>= 1)
   {
     digitalWrite(this->data_pin, !(b & m) ? LOW : HIGH);

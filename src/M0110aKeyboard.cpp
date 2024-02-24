@@ -130,13 +130,13 @@ byte M0110aKeyboard::readCols()
 // Check if the key is a keypad or arrow key needing a "keypad" prefix (0x79)
 bool M0110aKeyboard::isKeypad(byte row, byte col)
 {
-    Serial.printf("(%d, %d)\n\r", row, col);
-
     uint16_t kp_row = KEYPAD_MAP_BY_COL[col];
-
     uint16_t active_row = (1 << row);
 
+#ifdef SERIAL_DEBUG
+    Serial.printf("(%d, %d)\n\r", row, col);
     Serial.printf("active_row: %02X\tkp_row: %02X\n\r", active_row, kp_row);
+#endif
 
     return (active_row & kp_row);
 }
@@ -144,7 +144,7 @@ bool M0110aKeyboard::isKeypad(byte row, byte col)
 // Check if the key is one of the keypad keys that needs a "shift" prefix (0x71)
 bool M0110aKeyboard::isKeypadShift(byte row, byte col)
 {
-    return (col == 5 && (row == 9)) || (col == 6 && (row == 2 || row == 3));
+    return (col == 5 && (row == 9)) || (col == 6 && (row == 2 || row == 3 || row == 4));
 }
 
 // Checks if a given modifier key (Option, Command, Shift, Shift-Lock)
